@@ -163,6 +163,10 @@ private:
 
         float* data = reinterpret_cast<float*>(output_buffer_.data());
 
+        // Hailo NMS BY CLASS(FLOAT32) layout: [Count0, Count1, ..., CountN], [Box0_0, Box0_1...], [Box1_0...]
+        float* counts = data;
+        float* boxes_data = data + num_classes; // Boxes start immediately after all the counts
+
         unitree_go2_vision_msgs::msg::DetectionArray msg;
         msg.header.stamp = this->now();
         msg.header.frame_id = "camera_link";
@@ -170,8 +174,7 @@ private:
         int debug_y_pos = 60; // Initial Y pos for HUD
 
         for (uint32_t c = 0; c < num_classes; ++c) {
-            float* class_data = data + c * (1 + max_bboxes_per_class * 5); // 1 count + Max boxes * 5 attributes
-            int num_detections = std::round(class_data[0]);
+            int num_detections = std::round(counts[c]);
             
             // Safety clamp
             num_detections = std::clamp(num_detections, 0, (int)max_bboxes_per_class);
@@ -181,8 +184,10 @@ private:
             cv::putText(frame, cls_name + " count: " + std::to_string(num_detections), cv::Point(10, debug_y_pos), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 128, 0), 1);
             debug_y_pos += 20;
 
+            float* class_boxes = boxes_data + c * (max_bboxes_per_class * 5); // Navigate to this class's boxes block
+
             for (int i = 0; i < num_detections; ++i) {
-                float* box = &class_data[1 + (i * 5)];
+                float* box = &class_boxes[i * 5];
                 float y_min = box[0];
                 float x_min = box[1];
                 float y_max = box[2];
