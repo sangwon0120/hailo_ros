@@ -69,7 +69,7 @@ private:
             RCLCPP_ERROR(this->get_logger(), "Failed to create InferModel from %s", hef_path.c_str());
             throw std::runtime_error("Hailo init failed");
         }
-        infer_model_ = std::make_unique<hailort::InferModel>(infer_model_exp.release());
+        infer_model_ = infer_model_exp.release();
 
         infer_model_->set_batch_size(BATCH_SIZE);
         
@@ -90,7 +90,7 @@ private:
         bindings_ = std::make_unique<hailort::ConfiguredInferModel::Bindings>(bindings_exp.release());
 
         // Get Input Shape
-        auto shape = infer_model_->input()->get_info().shape;
+        auto shape = infer_model_->input()->shape();
         input_h_ = shape.height;
         input_w_ = shape.width;
         input_c_ = shape.features;
@@ -233,7 +233,7 @@ private:
     const float CONF_THRES = 0.25f;
 
     std::unique_ptr<hailort::VDevice> vdevice_;
-    std::unique_ptr<hailort::InferModel> infer_model_;
+    std::shared_ptr<hailort::InferModel> infer_model_;
     std::unique_ptr<hailort::ConfiguredInferModel> configured_infer_model_;
     std::unique_ptr<hailort::ConfiguredInferModel::Bindings> bindings_;
     
