@@ -1,0 +1,73 @@
+[  4%] [32mBuilding CXX object CMakeFiles/state_machine.dir/src/state_machine_test.cpp.o[0m
+[  9%] [32mBuilding CXX object CMakeFiles/go2_ai_controller.dir/src/common/ros2_sport_client.cpp.o[0m
+[ 14%] [32mBuilding CXX object CMakeFiles/go2_ai_controller.dir/src/go2_ai_controller.cpp.o[0m
+[ 19%] [32mBuilding CXX object CMakeFiles/state_machine.dir/src/common/ros2_sport_client.cpp.o[0m
+[ 23%] [32mBuilding CXX object CMakeFiles/feedback_based.dir/src/feedback_based.cpp.o[0m
+[ 28%] [32mBuilding CXX object CMakeFiles/practice.dir/src/common/ros2_sport_client.cpp.o[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/practice.dir/src/practice.cpp.o[0m
+[ 38%] [32mBuilding CXX object CMakeFiles/feedback_based.dir/src/common/ros2_sport_client.cpp.o[0m
+[ 42%] [32mBuilding CXX object CMakeFiles/hailo_subscriber.dir/src/hailo_subscriber.cpp.o[0m
+[ 52%] Built target camera_test
+[ 61%] Built target go2_stream_viewer
+[ 76%] Built target go2_vision_node
+In file included from [01m[K/home/sangw/hailo_robot_ws/src/hailo_robot_control/src/common/ros2_sport_client.cpp:4[m[K:
+[01m[K/home/sangw/hailo_robot_ws/src/hailo_robot_control/include/common/ros2_sport_client.h:9:10:[m[K [01;31m[Kfatal error: [m[Knlohmann/json.hpp: No such file or directory
+    9 | #include [01;31m[K"nlohmann/json.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+In file included from [01m[K/home/sangw/hailo_robot_ws/src/hailo_robot_control/src/go2_ai_controller.cpp:6[m[K:
+[01m[K/home/sangw/hailo_robot_ws/src/hailo_robot_control/include/common/ros2_sport_client.h:9:10:[m[K [01;31m[Kfatal error: [m[Knlohmann/json.hpp: No such file or directory
+    9 | #include [01;31m[K"nlohmann/json.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+In file included from [01m[K/home/sangw/hailo_robot_ws/src/hailo_robot_control/src/common/ros2_sport_client.cpp:4[m[K:
+[01m[K/home/sangw/hailo_robot_ws/src/hailo_robot_control/include/common/ros2_sport_client.h:9:10:[m[K [01;31m[Kfatal error: [m[Knlohmann/json.hpp: No such file or directory
+    9 | #include [01;31m[K"nlohmann/json.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/go2_ai_controller.dir/build.make:76: CMakeFiles/go2_ai_controller.dir/src/go2_ai_controller.cpp.o] Error 1
+gmake[2]: *** [CMakeFiles/practice.dir/build.make:90: CMakeFiles/practice.dir/src/common/ros2_sport_client.cpp.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+gmake[2]: *** Waiting for unfinished jobs....
+gmake[2]: *** [CMakeFiles/go2_ai_controller.dir/build.make:90: CMakeFiles/go2_ai_controller.dir/src/common/ros2_sport_client.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:203: CMakeFiles/go2_ai_controller.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+In file included from [01m[K/home/sangw/hailo_robot_ws/src/hailo_robot_control/src/feedback_based.cpp:5[m[K:
+[01m[K/home/sangw/hailo_robot_ws/src/hailo_robot_control/include/common/ros2_sport_client.h:9:10:[m[K [01;31m[Kfatal error: [m[Knlohmann/json.hpp: No such file or directory
+    9 | #include [01;31m[K"nlohmann/json.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/feedback_based.dir/build.make:76: CMakeFiles/feedback_based.dir/src/feedback_based.cpp.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+In file included from [01m[K/home/sangw/hailo_robot_ws/src/hailo_robot_control/src/practice.cpp:4[m[K:
+[01m[K/home/sangw/hailo_robot_ws/src/hailo_robot_control/include/common/ros2_sport_client.h:9:10:[m[K [01;31m[Kfatal error: [m[Knlohmann/json.hpp: No such file or directory
+    9 | nclude [01;31m[K"nlohmann/json.hpp"[m[K
+      |        [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+
+compilation terminated.
+gmake[2]: *** [CMakeFiles/practice.dir/build.make:76: CMakeFiles/practice.dir/src/practice.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:151: CMakeFiles/practice.dir/all] Error 2
+In file included from [01m[K/home/sangw/hailo_robot_ws/src/hailo_robot_control/src/state_machine_test.cpp:4[m[K:
+[01m[K/home/sangw/hailo_robot_ws/src/hailo_robot_control/include/common/ros2_sport_client.h:9:10:[m[K [01;31m[Kfatal error: [m[Knlohmann/json.hpp: No such file or directory
+    9 | #include [01;31m[K"nlohmann/json.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+In file included from [01m[K/home/sangw/hailo_robot_ws/src/hailo_robot_control/src/common/ros2_sport_client.cpp:4[m[K:
+[01m[K/home/sangw/hailo_robot_ws/src/hailo_robot_control/include/common/ros2_sport_client.h:9:10:[m[K [01;31m[Kfatal error: [m[Knlohmann/json.hpp: No such file or directory
+    9 | #include [01;31m[K"nlohmann/json.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/state_machine.dir/build.make:76: CMakeFiles/state_machine.dir/src/state_machine_test.cpp.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+gmake[2]: *** [CMakeFiles/feedback_based.dir/build.make:90: CMakeFiles/feedback_based.dir/src/common/ros2_sport_client.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:333: CMakeFiles/feedback_based.dir/all] Error 2
+In file included from [01m[K/home/sangw/hailo_robot_ws/src/hailo_robot_control/src/common/ros2_sport_client.cpp:4[m[K:
+[01m[K/home/sangw/hailo_robot_ws/src/hailo_robot_control/include/common/ros2_sport_client.h:9:10:[m[K [01;31m[Kfatal error: [m[Knlohmann/json.hpp: No such file or directory
+    9 | #include [01;31m[K"nlohmann/json.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/state_machine.dir/build.make:90: CMakeFiles/state_machine.dir/src/common/ros2_sport_client.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:177: CMakeFiles/state_machine.dir/all] Error 2
+[ 80%] [32m[1mLinking CXX executable hailo_subscriber[0m
+[ 80%] Built target hailo_subscriber
+gmake: *** [Makefile:146: all] Error 2

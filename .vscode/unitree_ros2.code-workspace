@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "../../unitree_ros2"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {}
+}

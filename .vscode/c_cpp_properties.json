@@ -1,0 +1,19 @@
+{
+  "configurations": [
+    {
+      "name": "ROS2",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "/opt/ros/jazzy/include/**"
+      ],
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu17",
+      "cppStandard": "gnu++17",
+      "intelliSenseMode": "linux-gcc-arm64",
+      "compileCommands": "${workspaceFolder}/build/hailo_robot_control/compile_commands.json"
+    }
+  ],
+  "version": 4
+  
+}
+

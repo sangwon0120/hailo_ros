@@ -1,0 +1,84 @@
+[0.008s] Invoking command in '/home/sangw/hailo_robot_ws/build/hailo_robot_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/sangw/hailo_robot_ws/src/hailo_robot_control -DCMAKE_INSTALL_PREFIX=/home/sangw/hailo_robot_ws/install/hailo_robot_control
+[0.019s] -- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.176s] -- Found rclcpp: 28.1.16 (/opt/ros/jazzy/share/rclcpp/cmake)
+[0.193s] -- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.199s] -- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.207s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.216s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.257s] -- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[0.259s] -- Found rmw_cyclonedds_cpp: 2.2.3 (/home/sangw/unitree_ros2/install/rmw_cyclonedds_cpp/share/rmw_cyclonedds_cpp/cmake)
+[0.282s] -- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+[0.322s] -- Found std_msgs: 5.3.6 (/opt/ros/jazzy/share/std_msgs/cmake)
+[0.331s] -- Found unitree_go: 0.0.0 (/home/sangw/unitree_ros2/install/unitree_go/share/unitree_go/cmake)
+[0.353s] -- Found unitree_api: 0.0.0 (/home/sangw/unitree_ros2/install/unitree_api/share/unitree_api/cmake)
+[0.363s] -- Found unitree_go2_vision_msgs: 0.0.0 (/home/sangw/unitree_ros2/install/unitree_go2_vision_msgs/share/unitree_go2_vision_msgs/cmake)
+[0.458s] -- Configuring done (0.4s)
+[0.491s] -- Generating done (0.0s)
+[0.502s] -- Build files have been written to: /home/sangw/hailo_robot_ws/build/hailo_robot_control
+[0.509s] Invoked command in '/home/sangw/hailo_robot_ws/build/hailo_robot_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/sangw/hailo_robot_ws/src/hailo_robot_control -DCMAKE_INSTALL_PREFIX=/home/sangw/hailo_robot_ws/install/hailo_robot_control
+[0.510s] Invoking command in '/home/sangw/hailo_robot_ws/build/hailo_robot_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/sangw/hailo_robot_ws/build/hailo_robot_control -- -j16 -l16
+[0.572s] [  9%] [32mBuilding CXX object CMakeFiles/hailo_subscriber.dir/src/hailo_subscriber.cpp.o[0m
+[0.575s] [  9%] [32mBuilding CXX object CMakeFiles/camera_test.dir/src/camera_test.cpp.o[0m
+[0.575s] [ 14%] [32mBuilding CXX object CMakeFiles/state_machine.dir/src/state_machine_test.cpp.o[0m
+[0.575s] [ 19%] [32mBuilding CXX object CMakeFiles/practice.dir/src/practice.cpp.o[0m
+[0.575s] [ 23%] [32mBuilding CXX object CMakeFiles/state_machine.dir/src/common/ros2_sport_client.cpp.o[0m
+[0.575s] [ 28%] [32mBuilding CXX object CMakeFiles/go2_vision_node.dir/src/go2_vision_node.cpp.o[0m
+[0.579s] [ 33%] [32mBuilding CXX object CMakeFiles/go2_vision_node.dir/src/YOLOInferencer.cpp.o[0m
+[0.580s] [ 38%] [32mBuilding CXX object CMakeFiles/go2_ai_controller.dir/src/go2_ai_controller.cpp.o[0m
+[0.580s] [ 47%] [32mBuilding CXX object CMakeFiles/go2_ai_controller.dir/src/common/ros2_sport_client.cpp.o[0m
+[0.580s] [ 47%] [32mBuilding CXX object CMakeFiles/practice.dir/src/common/ros2_sport_client.cpp.o[0m
+[0.583s] [ 52%] [32mBuilding CXX object CMakeFiles/go2_stream_viewer.dir/src/go2_stream_viewer.cpp.o[0m
+[0.603s] [ 61%] [32mBuilding CXX object CMakeFiles/feedback_based.dir/src/feedback_based.cpp.o[0m
+[0.603s] [ 61%] [32mBuilding CXX object CMakeFiles/feedback_based.dir/src/common/ros2_sport_client.cpp.o[0m
+[6.702s] [ 66%] [32m[1mLinking CXX executable go2_vision_node[0m
+[7.596s] [ 66%] Built target go2_vision_node
+[7.825s] [ 71%] [32m[1mLinking CXX executable go2_stream_viewer[0m
+[8.400s] [ 71%] Built target go2_stream_viewer
+[9.628s] [ 76%] [32m[1mLinking CXX executable practice[0m
+[9.866s] [ 80%] [32m[1mLinking CXX executable hailo_subscriber[0m
+[9.911s] [ 80%] Built target practice
+[10.076s] [ 80%] Built target hailo_subscriber
+[10.739s] [ 85%] [32m[1mLinking CXX executable state_machine[0m
+[10.999s] [ 85%] Built target state_machine
+[11.472s] [ 90%] [32m[1mLinking CXX executable camera_test[0m
+[12.040s] [ 90%] Built target camera_test
+[12.527s] [ 95%] [32m[1mLinking CXX executable feedback_based[0m
+[12.691s] [100%] [32m[1mLinking CXX executable go2_ai_controller[0m
+[12.907s] [100%] Built target feedback_based
+[13.039s] [100%] Built target go2_ai_controller
+[13.049s] Invoked command in '/home/sangw/hailo_robot_ws/build/hailo_robot_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/sangw/hailo_robot_ws/build/hailo_robot_control -- -j16 -l16
+[13.056s] Invoking command in '/home/sangw/hailo_robot_ws/build/hailo_robot_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/sangw/hailo_robot_ws/build/hailo_robot_control
+[13.063s] -- Install configuration: ""
+[13.063s] -- Installing: /home/sangw/hailo_robot_ws/install/hailo_robot_control/lib/hailo_robot_control/go2_stream_viewer
+[13.064s] -- Set non-toolchain portion of runtime path of "/home/sangw/hailo_robot_ws/install/hailo_robot_control/lib/hailo_robot_control/go2_stream_viewer" to ""
+[13.064s] -- Installing: /home/sangw/hailo_robot_ws/install/hailo_robot_control/lib/hailo_robot_control/feedback_based
+[13.070s] -- Set non-toolchain portion of runtime path of "/home/sangw/hailo_robot_ws/install/hailo_robot_control/lib/hailo_robot_control/feedback_based" to ""
+[13.070s] -- Installing: /home/sangw/hailo_robot_ws/install/hailo_robot_control/lib/hailo_robot_control/practice
+[13.073s] -- Set non-toolchain portion of runtime path of "/home/sangw/hailo_robot_ws/install/hailo_robot_control/lib/hailo_robot_control/practice" to ""
+[13.073s] -- Installing: /home/sangw/hailo_robot_ws/install/hailo_robot_control/lib/hailo_robot_control/state_machine
+[13.076s] -- Set non-toolchain portion of runtime path of "/home/sangw/hailo_robot_ws/install/hailo_robot_control/lib/hailo_robot_control/state_machine" to ""
+[13.076s] -- Installing: /home/sangw/hailo_robot_ws/install/hailo_robot_control/lib/hailo_robot_control/go2_ai_controller
+[13.082s] -- Set non-toolchain portion of runtime path of "/home/sangw/hailo_robot_ws/install/hailo_robot_control/lib/hailo_robot_control/go2_ai_controller" to ""
+[13.082s] -- Installing: /home/sangw/hailo_robot_ws/install/hailo_robot_control/lib/hailo_robot_control/go2_vision_node
+[13.083s] -- Set non-toolchain portion of runtime path of "/home/sangw/hailo_robot_ws/install/hailo_robot_control/lib/hailo_robot_control/go2_vision_node" to ""
+[13.083s] -- Installing: /home/sangw/hailo_robot_ws/install/hailo_robot_control/lib/hailo_robot_control/camera_test
+[13.085s] -- Set non-toolchain portion of runtime path of "/home/sangw/hailo_robot_ws/install/hailo_robot_control/lib/hailo_robot_control/camera_test" to ""
+[13.085s] -- Installing: /home/sangw/hailo_robot_ws/install/hailo_robot_control/lib/hailo_robot_control/hailo_subscriber
+[13.088s] -- Set non-toolchain portion of runtime path of "/home/sangw/hailo_robot_ws/install/hailo_robot_control/lib/hailo_robot_control/hailo_subscriber" to ""
+[13.088s] -- Up-to-date: /home/sangw/hailo_robot_ws/install/hailo_robot_control/lib/hailo_robot_control/hailo_detection.py
+[13.088s] -- Up-to-date: /home/sangw/hailo_robot_ws/install/hailo_robot_control/share/ament_index/resource_index/package_run_dependencies/hailo_robot_control
+[13.088s] -- Installing: /home/sangw/hailo_robot_ws/install/hailo_robot_control/share/ament_index/resource_index/parent_prefix_path/hailo_robot_control
+[13.088s] -- Up-to-date: /home/sangw/hailo_robot_ws/install/hailo_robot_control/share/hailo_robot_control/environment/ament_prefix_path.sh
+[13.088s] -- Up-to-date: /home/sangw/hailo_robot_ws/install/hailo_robot_control/share/hailo_robot_control/environment/ament_prefix_path.dsv
+[13.088s] -- Up-to-date: /home/sangw/hailo_robot_ws/install/hailo_robot_control/share/hailo_robot_control/environment/path.sh
+[13.088s] -- Up-to-date: /home/sangw/hailo_robot_ws/install/hailo_robot_control/share/hailo_robot_control/environment/path.dsv
+[13.088s] -- Up-to-date: /home/sangw/hailo_robot_ws/install/hailo_robot_control/share/hailo_robot_control/local_setup.bash
+[13.088s] -- Up-to-date: /home/sangw/hailo_robot_ws/install/hailo_robot_control/share/hailo_robot_control/local_setup.sh
+[13.088s] -- Up-to-date: /home/sangw/hailo_robot_ws/install/hailo_robot_control/share/hailo_robot_control/local_setup.zsh
+[13.088s] -- Up-to-date: /home/sangw/hailo_robot_ws/install/hailo_robot_control/share/hailo_robot_control/local_setup.dsv
+[13.088s] -- Installing: /home/sangw/hailo_robot_ws/install/hailo_robot_control/share/hailo_robot_control/package.dsv
+[13.088s] -- Up-to-date: /home/sangw/hailo_robot_ws/install/hailo_robot_control/share/ament_index/resource_index/packages/hailo_robot_control
+[13.088s] -- Up-to-date: /home/sangw/hailo_robot_ws/install/hailo_robot_control/share/hailo_robot_control/cmake/hailo_robot_controlConfig.cmake
+[13.088s] -- Up-to-date: /home/sangw/hailo_robot_ws/install/hailo_robot_control/share/hailo_robot_control/cmake/hailo_robot_controlConfig-version.cmake
+[13.088s] -- Up-to-date: /home/sangw/hailo_robot_ws/install/hailo_robot_control/share/hailo_robot_control/package.xml
+[13.090s] Invoked command in '/home/sangw/hailo_robot_ws/build/hailo_robot_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/sangw/hailo_robot_ws/build/hailo_robot_control

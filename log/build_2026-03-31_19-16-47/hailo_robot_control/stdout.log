@@ -1,0 +1,25 @@
+-- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Found rclcpp: 28.1.16 (/opt/ros/jazzy/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+-- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+-- Found rmw_cyclonedds_cpp: 2.2.3 (/home/sangw/unitree_ros2/install/rmw_cyclonedds_cpp/share/rmw_cyclonedds_cpp/cmake)
+-- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+-- Found std_msgs: 5.3.6 (/opt/ros/jazzy/share/std_msgs/cmake)
+-- Found unitree_go: 0.0.0 (/home/sangw/unitree_ros2/install/unitree_go/share/unitree_go/cmake)
+-- Found unitree_api: 0.0.0 (/home/sangw/unitree_ros2/install/unitree_api/share/unitree_api/cmake)
+-- Found unitree_go2_vision_msgs: 0.0.0 (/home/sangw/unitree_ros2/install/unitree_go2_vision_msgs/share/unitree_go2_vision_msgs/cmake)
+-- Configuring done (0.4s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/sangw/hailo_robot_ws/build/hailo_robot_control
+[  4%] [32mBuilding CXX object CMakeFiles/hailo_detection_publisher.dir/src/hailo_detection.cpp.o[0m
+[ 13%] Built target camera_test
+[ 26%] Built target go2_vision_node
+[ 34%] Built target hailo_subscriber
+[ 47%] Built target feedback_based
+[ 60%] Built target practice
+[ 73%] Built target state_machine
+[ 82%] Built target go2_stream_viewer
+[ 95%] Built target go2_ai_controller
