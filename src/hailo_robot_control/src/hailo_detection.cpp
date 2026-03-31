@@ -142,6 +142,9 @@ private:
         cv::cvtColor(frame, rgb, cv::COLOR_BGR2RGB);
 
         cv::Mat img_letterbox = letterbox(rgb, cv::Size(input_w_, input_h_), cv::Scalar(114, 114, 114));
+        if (!img_letterbox.isContinuous()) {
+            img_letterbox = img_letterbox.clone();
+        }
 
         bindings_->input()->set_buffer(hailort::MemoryView(img_letterbox.data, img_letterbox.total() * img_letterbox.elemSize()));
 
@@ -153,55 +156,60 @@ private:
         if (!job) return;
         job->wait(TIMEOUT_MS);
 
-        // Parse Results
+        // Parse Results using HAILO_FORMAT_ORDER_HAILO_NMS_BY_CLASS layout
+        auto nms_shape = infer_model_->output(output_name_)->get_nms_shape().value();
+        uint32_t num_classes = nms_shape.number_of_classes;
+        uint32_t max_bboxes_per_class = nms_shape.max_bboxes_per_class;
+
         float* data = reinterpret_cast<float*>(output_buffer_.data());
-        int num_detections = static_cast<int>(data[0]);
 
         unitree_go2_vision_msgs::msg::DetectionArray msg;
         msg.header.stamp = this->now();
         msg.header.frame_id = "camera_link";
 
-        std::vector<cv::Rect> bboxes;
-        std::vector<std::string> labels;
+        for (uint32_t c = 0; c < num_classes; ++c) {
+            float* class_data = data + c * (1 + max_bboxes_per_class * 5); // 1 count + Max boxes * 5 attributes
+            int num_detections = static_cast<int>(class_data[0]);
 
-        for (int i = 0; i < num_detections; ++i) {
-            float* box = &data[1 + (i * 6)];
-            float y_min = box[0];
-            float x_min = box[1];
-            float y_max = box[2];
-            float x_max = box[3];
-            float score = box[4];
-            int class_id = static_cast<int>(box[5]);
+            for (int i = 0; i < num_detections; ++i) {
+                float* box = &class_data[1 + (i * 5)];
+                float y_min = box[0];
+                float x_min = box[1];
+                float y_max = box[2];
+                float x_max = box[3];
+                float score = box[4];
+                int class_id = c; // Class ID is implicit by array index
 
-            if (score < CONF_THRES) continue;
+                if (score < CONF_THRES) continue;
 
-            // Scale to original
-            x_min *= orig_w;
-            x_max *= orig_w;
-            y_min *= orig_h;
-            y_max *= orig_h;
+                // Scale to original (Exactly matching Python logic)
+                x_min *= orig_w;
+                x_max *= orig_w;
+                y_min *= orig_h;
+                y_max *= orig_h;
 
-            x_min = std::clamp(x_min, 0.0f, (float)(orig_w - 1));
-            x_max = std::clamp(x_max, 0.0f, (float)(orig_w - 1));
-            y_min = std::clamp(y_min, 0.0f, (float)(orig_h - 1));
-            y_max = std::clamp(y_max, 0.0f, (float)(orig_h - 1));
+                x_min = std::clamp(x_min, 0.0f, (float)(orig_w - 1));
+                x_max = std::clamp(x_max, 0.0f, (float)(orig_w - 1));
+                y_min = std::clamp(y_min, 0.0f, (float)(orig_h - 1));
+                y_max = std::clamp(y_max, 0.0f, (float)(orig_h - 1));
 
-            unitree_go2_vision_msgs::msg::Detection d;
-            d.class_id = class_id;
-            d.class_name = class_names_.count(class_id) ? class_names_[class_id] : std::to_string(class_id);
-            d.score = score;
-            d.x_min = x_min;
-            d.y_min = y_min;
-            d.x_max = x_max;
-            d.y_max = y_max;
+                unitree_go2_vision_msgs::msg::Detection d;
+                d.class_id = class_id;
+                d.class_name = class_names_.count(class_id) ? class_names_[class_id] : std::to_string(class_id);
+                d.score = score;
+                d.x_min = x_min;
+                d.y_min = y_min;
+                d.x_max = x_max;
+                d.y_max = y_max;
 
-            msg.detections.push_back(d);
+                msg.detections.push_back(d);
 
-            if (x_max > x_min && y_max > y_min) {
-                cv::rectangle(frame, cv::Point(x_min, y_min), cv::Point(x_max, y_max), cv::Scalar(0, 255, 0), 2);
-                cv::putText(frame, d.class_name + ": " + std::to_string(score).substr(0, 4),
-                            cv::Point(x_min, std::max((float)y_min - 5, 0.0f)),
-                            cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(0, 255, 0), 1);
+                if (x_max > x_min && y_max > y_min) {
+                    cv::rectangle(frame, cv::Point(x_min, y_min), cv::Point(x_max, y_max), cv::Scalar(0, 255, 0), 2);
+                    cv::putText(frame, d.class_name + ": " + std::to_string(score).substr(0, 4),
+                                cv::Point(x_min, std::max((float)y_min - 5, 0.0f)),
+                                cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(0, 255, 0), 1);
+                }
             }
         }
 
