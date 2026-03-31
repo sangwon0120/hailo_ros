@@ -55,16 +55,13 @@ private:
     {
         std::string hef_path = "hyolov8s.hef";
         
-        // VDevice creation
-        hailort::VDevice::create_params params;
-        params.scheduling_algorithm = hailo_scheduling_algorithm_t::HAILO_SCHEDULING_ALGORITHM_ROUND_ROBIN;
-        
-        auto vdevice_exp = hailort::VDevice::create(params);
+        // VDevice creation (Using default parameters)
+        auto vdevice_exp = hailort::VDevice::create();
         if (!vdevice_exp) {
             RCLCPP_ERROR(this->get_logger(), "Failed to create VDevice");
             throw std::runtime_error("Hailo init failed");
         }
-        vdevice_ = vdevice_exp.release();
+        vdevice_ = vdevice_exp.release(); // VDevice::create usually returns Expected<unique_ptr<VDevice>>
 
         // Create Infer Model
         auto infer_model_exp = vdevice_->create_infer_model(hef_path);
@@ -72,7 +69,7 @@ private:
             RCLCPP_ERROR(this->get_logger(), "Failed to create InferModel from %s", hef_path.c_str());
             throw std::runtime_error("Hailo init failed");
         }
-        infer_model_ = infer_model_exp.release();
+        infer_model_ = std::make_unique<hailort::InferModel>(infer_model_exp.release());
 
         infer_model_->set_batch_size(BATCH_SIZE);
         
@@ -86,17 +83,17 @@ private:
         // Configure Model
         auto configured_exp = infer_model_->configure();
         if (!configured_exp) throw std::runtime_error("Failed to configure model");
-        configured_infer_model_ = configured_exp.release();
+        configured_infer_model_ = std::make_unique<hailort::ConfiguredInferModel>(configured_exp.release());
 
         auto bindings_exp = configured_infer_model_->create_bindings();
         if (!bindings_exp) throw std::runtime_error("Failed to create bindings");
-        bindings_ = bindings_exp.release();
+        bindings_ = std::make_unique<hailort::ConfiguredInferModel::Bindings>(bindings_exp.release());
 
         // Get Input Shape
-        auto input_shape = infer_model_->input()->get_shape();
-        input_h_ = input_shape.height;
-        input_w_ = input_shape.width;
-        input_c_ = input_shape.features;
+        auto shape = infer_model_->input()->get_info().shape;
+        input_h_ = shape.height;
+        input_w_ = shape.width;
+        input_c_ = shape.features;
         RCLCPP_INFO(this->get_logger(), "Input shape: H=%d, W=%d, C=%d", input_h_, input_w_, input_c_);
 
         // Allocate Output Buffer
@@ -235,10 +232,10 @@ private:
     const std::chrono::milliseconds TIMEOUT_MS{10000};
     const float CONF_THRES = 0.25f;
 
-    std::shared_ptr<hailort::VDevice> vdevice_;
-    std::shared_ptr<hailort::InferModel> infer_model_;
-    std::shared_ptr<hailort::ConfiguredInferModel> configured_infer_model_;
-    std::shared_ptr<hailort::ConfiguredInferModel::Bindings> bindings_;
+    std::unique_ptr<hailort::VDevice> vdevice_;
+    std::unique_ptr<hailort::InferModel> infer_model_;
+    std::unique_ptr<hailort::ConfiguredInferModel> configured_infer_model_;
+    std::unique_ptr<hailort::ConfiguredInferModel::Bindings> bindings_;
     
     std::string output_name_;
     std::vector<uint8_t> output_buffer_;
