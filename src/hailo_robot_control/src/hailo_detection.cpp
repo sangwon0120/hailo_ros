@@ -167,9 +167,19 @@ private:
         msg.header.stamp = this->now();
         msg.header.frame_id = "camera_link";
 
+        int debug_y_pos = 60; // Initial Y pos for HUD
+
         for (uint32_t c = 0; c < num_classes; ++c) {
             float* class_data = data + c * (1 + max_bboxes_per_class * 5); // 1 count + Max boxes * 5 attributes
-            int num_detections = static_cast<int>(class_data[0]);
+            int num_detections = std::round(class_data[0]);
+            
+            // Safety clamp
+            num_detections = std::clamp(num_detections, 0, (int)max_bboxes_per_class);
+
+            // Draw HUD for class count
+            std::string cls_name = class_names_.count(c) ? class_names_[c] : "Class " + std::to_string(c);
+            cv::putText(frame, cls_name + " count: " + std::to_string(num_detections), cv::Point(10, debug_y_pos), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 128, 0), 1);
+            debug_y_pos += 20;
 
             for (int i = 0; i < num_detections; ++i) {
                 float* box = &class_data[1 + (i * 5)];
